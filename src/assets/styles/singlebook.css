@@ -31,3 +31,10 @@
     align-items: center;
     text-align: center;
 }
+
+.button-box{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 165px;
+}

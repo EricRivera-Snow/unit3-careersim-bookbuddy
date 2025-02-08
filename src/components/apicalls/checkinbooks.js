@@ -1,7 +1,7 @@
 const cohortName = "2412-FTB-ET-WEB-FT";
 const API_URL = `https://fsa-book-buddy-b6e748d1380d.herokuapp.com/api`;
 
-const checkinBooks = async (bookId, token) => {
+const checkInBooks = async (bookId, token) => {
   if (!token) {
     console.error("Authorization token is missing");
     return;
@@ -25,4 +25,4 @@ const checkinBooks = async (bookId, token) => {
   }
 };
 
-export { checkinBooks };
+export { checkInBooks };

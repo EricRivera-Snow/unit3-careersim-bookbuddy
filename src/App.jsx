@@ -1,4 +1,5 @@
 // === IMPORTS ===
+
 // library imports
 import { useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
@@ -37,7 +38,7 @@ function App() {
     }
   }, []);
 
-  // page generation
+  // page mockup
   return (
     <>
       <header className="header-container">
@@ -50,7 +51,7 @@ function App() {
 
       <Routes>
         <Route path="/" element={<Home token={token} setToken={setToken} />} />
-        <Route element={<ProtectedRoute />}>
+        <Route element={<ProtectedRoute token={token} />}>
           <Route path="/account" element={<Account token={token} />} />
         </Route>
         <Route path="/login" element={<Login setToken={setToken} />} />

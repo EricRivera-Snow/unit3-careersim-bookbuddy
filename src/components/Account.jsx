@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { fetchReservations } from "./apicalls/fetchreservations";
 import "../assets/styles/Books.css";
-import { checkinBooks } from "./apicalls/checkinbooks";
+// import { checkInBooks } from "./apicalls/checkinbooks";
 
 function Account({ token }) {
   // ✅ Ensure token is received
@@ -41,19 +41,19 @@ function Account({ token }) {
     loadReservedBooks();
   }, [token, navigate]); // ✅ Added token to dependencies
 
-  const handleCheckIn = async (bookId) => {
-    try {
-      const response = await checkinBooks(bookId, token);
+  // const handleCheckIn = async (bookId) => {
+  //   try {
+  //     const response = await checkInBooks(bookId, token);
       
-      if(response && response.success) {
-        setReservedBooks((prevBooks) =>
-        prevBooks.filter((book)=>book.id !== bookId))
-      }
+  //     if(response && response.success) {
+  //       setReservedBooks((prevBooks) =>
+  //       prevBooks.filter((book)=>book.id !== bookId))
+  //     }
 
-    } catch (err) {
-      console.error(err);
-    }
-  };
+  //   } catch (err) {
+  //     console.error(err);
+  //   }
+  // };
 
   return (
     <div className="page-container">
@@ -78,7 +78,7 @@ function Account({ token }) {
               <p className="card-component">
                 {book.available ? "Checked-In" : "Checked-Out"}
               </p>
-              <button type="button" onClick={()=>handleCheckIn(book.id)}>Check-In</button>
+              {/* <button type="button" onClick={()=>handleCheckIn(book.id)}>Check-In</button> */}
               <button
                 type="button"
                 onClick={() => navigate(`/books/${book.id}`)}
