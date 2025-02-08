@@ -1,13 +1,13 @@
 const cohortName = "2412-FTB-ET-WEB-FT";
 const API_URL = `https://fsa-book-buddy-b6e748d1380d.herokuapp.com/api`;
 
-const checkInBooks = async (bookId, token) => {
+const checkInBooks = async (reservationId, token) => {
   if (!token) {
     console.error("Authorization token is missing");
     return;
   }
   try {
-    const response = await fetch(`${API_URL}/reservations/${bookId}`, {
+    const response = await fetch(`${API_URL}/reservations/${reservationId}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",

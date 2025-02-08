@@ -1,59 +1,50 @@
+// === IMPORTS ===
+
+// library imports
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+
+// api/fetch imports
 import { fetchReservations } from "./apicalls/fetchreservations";
+import { checkInBooks } from "./apicalls/checkinbooks";
+
+// style imports
 import "../assets/styles/Books.css";
-// import { checkInBooks } from "./apicalls/checkinbooks";
+
+// === APP CODE ===
 
 function Account({ token }) {
-  // ✅ Ensure token is received
+  // function variables
   const navigate = useNavigate();
   const [reservedBooks, setReservedBooks] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
+  // function calls
   useEffect(() => {
     if (!token) {
-      navigate("/login"); // ✅ Redirect unauthenticated users
+      navigate("/login");
       return;
     }
 
     const loadReservedBooks = async () => {
-      try {
-        const response = await fetchReservations(token);
-        console.log("📥 API Response:", response);
-
-        if (response && Array.isArray(response)) {
-          setReservedBooks(response);
-        } else {
-          console.error("❌ Unexpected API Response:", response);
-          setError("Failed to fetch reserved books.");
-          setReservedBooks([]);
-        }
-      } catch (err) {
-        console.error("❌ Error Fetching Reservations:", err);
-        setError("An error occurred while loading reserved books.");
-        setReservedBooks([]);
-      } finally {
-        setLoading(false);
-      }
+      const json = await fetchReservations(token);
+      setReservedBooks(json);
     };
-
     loadReservedBooks();
-  }, [token, navigate]); // ✅ Added token to dependencies
+  }, [token, navigate]);
 
-  // const handleCheckIn = async (bookId) => {
-  //   try {
-  //     const response = await checkInBooks(bookId, token);
-      
-  //     if(response && response.success) {
-  //       setReservedBooks((prevBooks) =>
-  //       prevBooks.filter((book)=>book.id !== bookId))
-  //     }
+  const handleCheckIn = async (reservationId) => {
+    const json = await checkInBooks(reservationId, token);
+    if (json) {
+      alert("Check-In Successful");
+    }
+    setReservedBooks((prev) =>
+      prev.filter((book) => book.id !== reservationId)
+    );
+  };
 
-  //   } catch (err) {
-  //     console.error(err);
-  //   }
-  // };
+  // page mockup
 
   return (
     <div className="page-container">
@@ -78,7 +69,9 @@ function Account({ token }) {
               <p className="card-component">
                 {book.available ? "Checked-In" : "Checked-Out"}
               </p>
-              {/* <button type="button" onClick={()=>handleCheckIn(book.id)}>Check-In</button> */}
+              <button type="button" onClick={() => handleCheckIn(book.id)}>
+                Check-In
+              </button>
               <button
                 type="button"
                 onClick={() => navigate(`/books/${book.id}`)}
