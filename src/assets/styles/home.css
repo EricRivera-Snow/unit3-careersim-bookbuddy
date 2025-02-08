@@ -1,0 +1,44 @@
+/* === Home Page Styles === */
+.home-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh; /* Ensure full viewport height */
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: black; /* Adds black background for letterbox effect */
+}
+
+.home-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensures full-screen fit without stretching */
+  filter: brightness(50%); /* Darkens image for better text readability */
+  z-index: 0; /* Keeps image behind text */
+}
+
+.home-overlay {
+  position: relative;
+  z-index: 1; /* Ensures text is above the image */
+  text-align: center;
+  color: white;
+  background: rgba(0, 0, 0, 0.6); /* Semi-transparent black overlay for readability */
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 80%;
+}
+
+h2 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+p {
+  font-size: 1.2rem;
+  font-weight: lighter;
+}

@@ -1,40 +1,111 @@
+/* === General Styles === */
 * {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+/* === Container for Book Cards === */
 .card-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
 }
 
+/* === Card Styling === */
 .card {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 400px;
-    margin: 10px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 350px;
+  padding: 20px;
+  border-radius: 15px;
+  background: linear-gradient(145deg, #ffffff, #e6e6e6);
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease-in-out;
+  position: relative;
+  overflow: hidden;
+  min-height: 480px; /* Ensures consistent height */
 }
 
+/* === Card Hover Effect === */
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 6px 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* === Card Image Styling === */
 .card img {
-    width: 200px;
-    height: auto;
+  width: 200px;
+  height: auto;
+  border-radius: 10px;
+  transition: transform 0.3s ease-in-out;
 }
 
-.card-component {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
+/* Image hover zoom effect */
+.card img:hover {
+  transform: scale(1.05);
 }
 
-.button-box{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    width: 165px;
+/* === Book Title Styling (Black to Gray Gradient) === */
+.card h3 {
+  font-size: 1.6rem;
+  font-weight: bold;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+
+  /* ✅ Gradient Text Effect */
+  background: linear-gradient(90deg, rgb(0, 0, 0), rgb(0, 0, 0));
+  -webkit-background-clip: text; /* ✅ Makes gradient apply only to text */
+  -webkit-text-fill-color: transparent; /* ✅ Ensures text takes the gradient */
+}
+
+/* === Book Info Section (Aligns Author & Availability to Bottom) === */
+.card-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end; /* ✅ Pushes elements to the bottom */
+  align-items: center;
+  flex-grow: 1; /* ✅ Ensures it fills remaining space */
+  text-align: center;
+  width: 100%;
+  padding: 10px;
+}
+
+.card p {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 5px;
+}
+
+/* === Button Box (Aligned to Bottom) === */
+.button-box {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: auto; /* ✅ Pushes buttons to the bottom */
+  padding: 10px 0;
+}
+
+/* === Cool Button Styling === */
+button {
+  background: linear-gradient(135deg, #007bff, #0056b3);
+  border: none;
+  padding: 8px 15px;
+  border-radius: 8px;
+  font-size: 1rem;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+button:hover {
+  background: linear-gradient(135deg, #0056b3, #003d80);
+  transform: scale(1.05);
+}
+
+button:active {
+  transform: scale(0.95);
 }

@@ -29,19 +29,20 @@ function Books() {
           books.map((book) => {
             return (
               <div key={book.id} className="card">
-                <h3 className="card-component">{book.title}</h3>
-                <img
-                  className="card-component"
-                  src={book.coverimage}
-                  alt={book.title}
-                />
-                <p className="card-component">Author: {book.author}</p>
-                <p className="card-component">
-                  {book.available ? "Checked-In" : "Checked-Out"}
-                </p>
-                <button type="button" onClick={() => navigate(`/books/${book.id}`)}>
-                  {book.available ? "Details & Checkout" : "Details"}
-                </button>
+                <img src={book.coverimage} alt={book.title} />
+                <h3>{book.title}</h3>
+                <div className="card-info">
+                  <p>Author: {book.author}</p>
+                  <p>{book.available ? "Checked-In" : "Checked-Out"}</p>
+                  <div className="button-box">
+                    <button onClick={() => handleCheckIn(book.id)}>
+                      Check-In
+                    </button>
+                    <button onClick={() => navigate(`/books/${book.id}`)}>
+                      {book.available ? "Details & Checkout" : "Details"}
+                    </button>
+                  </div>
+                </div>
               </div>
             );
           })

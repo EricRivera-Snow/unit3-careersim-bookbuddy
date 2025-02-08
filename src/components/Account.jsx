@@ -50,7 +50,6 @@ function Account({ token }) {
     <div className="page-container">
       <h2 className="page-heading">Reserved Books</h2>
 
-      {loading && <p>Loading books...</p>}
       {error && <p className="error-message">{error}</p>}
 
       <div className="card-container">
@@ -69,6 +68,7 @@ function Account({ token }) {
               <p className="card-component">
                 {book.available ? "Checked-In" : "Checked-Out"}
               </p>
+              <div className="button-box">
               <button type="button" onClick={() => handleCheckIn(book.id)}>
                 Check-In
               </button>
@@ -78,6 +78,8 @@ function Account({ token }) {
               >
                 {book.available ? "Details & Checkout" : "Details"}
               </button>
+
+              </div>
             </div>
           ))
         )}

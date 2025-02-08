@@ -65,6 +65,8 @@ function SingleBook({ token }) {
                 {book.available ? "Checked-In" : "Checked-Out"}
               </p>
               <p className="card-component">{book.description}</p>
+             <div className="button-box">
+              
               <button type="button" onClick={() => navigate(`/account`)}>
                 Visit Account Page
               </button>
@@ -75,6 +77,7 @@ function SingleBook({ token }) {
               ) : (
                 "Not Available"
               )}
+              </div>
             </div>
           </div>
         </div>
